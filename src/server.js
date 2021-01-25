@@ -26,9 +26,18 @@ app.use('/api/user', userRouter)
 app.use('/api/item', itemRouter)
 app.use('/api/list', listRouter)
 
+app.get('/test', (req, res) => {
+  res.send({ message: 'Yo' })
+})
+
+app.post('/test', (req, res) => {
+  console.log(req.params)
+  res.send({ message: 'Yo' })
+})
+
 export const start = async () => {
   try {
-    await connect()
+    // await connect()
     app.listen(config.port, () => {
       console.log(`REST API on http://localhost:${config.port}/api`)
     })
